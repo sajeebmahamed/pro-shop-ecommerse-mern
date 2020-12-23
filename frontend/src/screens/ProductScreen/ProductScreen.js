@@ -8,7 +8,7 @@ import Message from '../../components/Messages/Message';
 import Rating from '../../components/Rating/Rating';
 
 const ProductScreen = ({ history, match }) => {
-    const [qty, setQty] = useState(0)
+    const [qty, setQty] = useState(1)
 
     const dispatch = useDispatch()
 
