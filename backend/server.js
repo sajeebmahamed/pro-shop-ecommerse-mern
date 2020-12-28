@@ -5,6 +5,7 @@ const color = require('colors')
 const productRoutes = require('./routes/productRoutes')
 const userRoutes = require('./routes/userRoutes')
 const { notFound, errorHandler } = require('./middleware/errorMiddleware')
+const  orderRoutes = require('./routes//orderRoutes')
 
 dotenv.config()
 connectDB()
@@ -14,6 +15,7 @@ app.use(express.json())
 
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/orders', orderRoutes)
 
 app.use(notFound)
 app.use(errorHandler)
