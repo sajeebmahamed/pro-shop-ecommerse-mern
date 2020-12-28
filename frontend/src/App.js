@@ -7,6 +7,7 @@ import CartScreen from './screens/CartScreen/CartScreen';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
 import PaymentScreen from './screens/PaymentScreen/PaymentScreen';
+import PlaceorderScreen from './screens/PlaceorderScreen/PlaceorderScreen';
 import ProductScreen from './screens/ProductScreen/ProductScreen';
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
@@ -19,6 +20,7 @@ const App = () => {
       <Header />
         <main className="py-3">
           <Container>
+            <Route path='/placeorder' component={PlaceorderScreen} />
             <Route path='/payment' component={PaymentScreen} />
             <Route path='/' component={HomeScreen} exact />
             <Route path='/login' component={LoginScreen} />
