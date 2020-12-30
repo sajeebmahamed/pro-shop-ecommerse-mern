@@ -13,6 +13,7 @@ import ProductScreen from './screens/ProductScreen/ProductScreen';
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
 import ShippingScreen from './screens/ShippingScreen/ShippingScreen';
+import UserListScreen from './screens/UserListScreen/UserListScreen';
 
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
             <Route path='/profile' component={ProfileScreen} />
             <Route path='/product/:id' component={ProductScreen} />
             <Route path='/cart/:id?' component={CartScreen} />
+            <Route path='/admin/userlist' component={UserListScreen} />
             <Route path='/shipping' component={ShippingScreen} />
           </Container>
         </main>
