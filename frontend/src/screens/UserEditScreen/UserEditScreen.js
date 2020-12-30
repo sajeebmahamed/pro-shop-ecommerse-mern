@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getUserDetails } from '../../actions/userActions';
+import { getUserDetails, updateUser } from '../../actions/userActions';
 import FormContainer from '../../components/FromContainer/FromContainer';
 import SpinLoader from '../../components/Loaders/SpinLoader';
 import Message from '../../components/Messages/Message';
+import { USER_UPDATE_RESET } from '../../constants/userConstants';
 
 const UserEditScreen = ({ match, history }) => {
 
@@ -20,7 +21,18 @@ const UserEditScreen = ({ match, history }) => {
     const userDetails = useSelector((state) => state.userDetails)
     const { loading, error, user } = userDetails
 
+    const userUpdate = useSelector((state) => state.userUpdate)
+    const {
+        loading: loadingUpdate,
+        error: errorUpdate,
+        success: successUpdate,
+    } = userUpdate
+
     useEffect(() => {
+        if (successUpdate) {
+            dispatch({ type: USER_UPDATE_RESET })
+            history.push('/admin/userlist')
+        }
         if (!user.name || user._id !== userId) {
             dispatch(getUserDetails(userId))
         } else {
@@ -28,10 +40,11 @@ const UserEditScreen = ({ match, history }) => {
             setEmail(user.email)
             setIsAdmin(user.isAdmin)
         }
-    }, [dispatch, userId, user])
+    }, [dispatch, userId, history, successUpdate, user])
 
     const submitHandler = (e) => {
         e.preventDefault()
+        dispatch(updateUser({ _id: userId, name, email, isAdmin }))
     }
 
     return (
@@ -41,6 +54,8 @@ const UserEditScreen = ({ match, history }) => {
       </Link>
             <FormContainer>
                 <h1>Edit User</h1>
+                {loadingUpdate && <SpinLoader />}
+                {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
                 {loading ? (
                     <SpinLoader />
                 ) : error ? (
