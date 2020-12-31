@@ -8,12 +8,17 @@ const userRoutes = require('./routes/userRoutes')
 const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 const orderRoutes = require('./routes/orderRoutes')
 const uploadRoutes = require('./routes/uploadRoutes')
+const morgan = require('morgan')
 
 dotenv.config()
 connectDB()
 
 const app = express()
 app.use(express.json())
+
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'))
+}
 
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
