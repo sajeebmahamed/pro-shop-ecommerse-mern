@@ -5,13 +5,14 @@ import { listProducts } from '../../actions/productActions';
 import SpinLoader from '../../components/Loaders/SpinLoader';
 import Message from '../../components/Messages/Message';
 import Product from '../../components/Product/Product';
-const HomeScreen = () => {
+const HomeScreen = ({ match }) => {
+    const keyword = match.params.keyword
     const dispatch = useDispatch()
     const productList = useSelector(state => state.productList)
     const { loading, error, products } = productList
     useEffect(() => {
-        dispatch(listProducts())
-    }, [dispatch])
+        dispatch(listProducts(keyword))
+    }, [dispatch, keyword])
     return (
         <>
             <h3> Latest Products </h3>   
