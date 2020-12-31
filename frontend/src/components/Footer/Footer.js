@@ -7,7 +7,9 @@ const Footer = () => {
             <Container>
                 <Row>
                     <Col className="text-center py-3">
-                        footer
+                       <div style={{ height: '1rem' }}>
+                        MERN || PRO SHOP 
+                       </div>
                     </Col>
                 </Row>
             </Container>
