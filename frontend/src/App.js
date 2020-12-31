@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import CartScreen from './screens/CartScreen/CartScreen';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
+import OrderListScreen from './screens/OrderListScreen/OrderListScreen';
 import OrderScreen from './screens/OrderScreen/OrderScreen';
 import PaymentScreen from './screens/PaymentScreen/PaymentScreen';
 import PlaceorderScreen from './screens/PlaceorderScreen/PlaceorderScreen';
@@ -38,6 +39,7 @@ const App = () => {
             <Route path='/admin/user/:id/edit' component={UserEditScreen} />
             <Route path='/admin/productlist' component={ProductListScreen} />
             <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
+            <Route path='/admin/orderlist' component={OrderListScreen} />
             <Route path='/shipping' component={ShippingScreen} />
           </Container>
         </main>
